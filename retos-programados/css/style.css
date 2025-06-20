@@ -1,0 +1,197 @@
+.botones {
+    display: inline-block;
+    background-color: rgb(125, 203, 248);
+    color: black;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 16px;
+    border: none;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none !important;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+}
+
+.botones:hover {
+    background-color: rgb(85, 158, 201);
+    color: white;
+    font-size: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.linea-separadora {
+    border: none;
+    height: 3px;
+    background-color: rgba(85, 158, 201, 1);
+    border-radius: 30px;
+    width: 60%;
+    margin-left: 0;
+}
+
+.linea-separadora2 {
+    border: none;
+    height: 3px;
+    background-color: rgba(85, 158, 201, 1);
+    border-radius: 30px;
+    margin-left: 0;
+}
+
+p {
+    text-align: justify;
+    font-size: 18px;
+    color: black;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.imagen-auto img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: auto;
+}
+
+.seccion2 {
+    background-color: #f0f0f0;        
+    border-radius: 30px;              
+    padding: 40px 20px;
+    margin: 40px auto;                
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
+    max-width: 1200px;                
+}
+
+.seccion2 h2 {
+    color: black;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.seccion2 h3 {
+    color: black;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.seccion2 .tituloSeccion2 {
+    padding-top: 25px;
+    padding-bottom: 45px;
+    font-size: 45px;
+}
+
+.seccion2 .icon {
+  display: inline-flex;              /* Centrado interno */
+  align-items: center;
+  justify-content: center;
+  width: 100px;                      /* Tamaño fijo del contenedor */
+  height: 100px;
+  clip-path: circle();
+  background-color: rgb(125, 203, 248);
+  font-size: 40px;
+  color: #000;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);  /* Mejor presencia */
+  transition: transform 0.3s ease;
+}
+
+.seccion2 .icon:hover {
+  transform: scale(1.1);             /* Animación al pasar el mouse */
+}
+
+.r3 {
+    margin-top: 10px;
+    font-style: italic; 
+    font-size: 1.5rem; 
+    color: #2c2c2c; 
+    letter-spacing: 1px;
+}
+
+.bg-verde {
+    background-color: green;
+    color: white;
+}
+
+.bg-naranja {
+    background-color: orange;
+    color: white;
+}
+
+.bg-rojo {
+    background-color: red;
+    color: white;
+}
+
+.img-partes {
+    width: 100%;
+    max-width: 350px;
+    aspect-ratio: 7 / 5; /* mantiene proporción 350x250 */
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 15px auto;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.img-partes2 {
+    width: 100%;
+    max-width: 350px;
+    aspect-ratio: 16 / 9;
+    object-fit: contain; /* ajusta para mostrar todo */
+    object-position: center;
+    background-color: #fff; /* opcional, para rellenar */
+    display: block;
+    margin: 0 auto 15px auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.banner1 {
+    background-image: url("../imagenes/x6.jpg");
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background-attachment: fixed;
+}
+
+.banner2{
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0,0,0,0.4); 
+    z-index: 1;
+}
+
+.banner3 {
+    background-image: url("../imagenes/fondo.jpg");
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+    width: 100%;
+    height: 400px;
+    padding-left: 100px;
+    background-attachment: fixed;
+}
+
+/* En pantallas pequeñas, se ajusta automáticamente */
+@media (max-width: 768px) {
+    .img-partes {
+        max-width: 220px;
+        aspect-ratio: 3 / 2; /* puede cambiar a círculo perfecto si prefieres */
+    }
+
+    .seccion2 h3{
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .img-partes {
+        max-width: 180px;
+    }
+}
+
