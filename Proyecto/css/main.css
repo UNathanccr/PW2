@@ -193,17 +193,14 @@ header .navbar .navbar-toggler:focus {
   transform: translateY(-0.125rem);
 }
 
-.section-divider {
-  height: 6.25rem;
-  background-color: #ffffff;
-  position: relative;
-  margin-top: -0.0625rem;
-  clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
+.section-divider{
+  height: 90px;               /* alto del divisor */
+  background: linear-gradient(90deg,#f8f9fa, black
+  );
+  clip-path: polygon(0 0, 100% 0, 100% 65%, 0 100%);
 }
-@media (max-width: 576px) {
-  .section-divider {
-    height: 3.75rem;
-  }
+@media (max-width: 576px){
+  .section-divider{ height: 60px; }
 }
 
 .geometric-shape {
@@ -216,6 +213,30 @@ header .navbar .navbar-toggler:focus {
   .geometric-shape {
     height: 6.25rem;
   }
+}
+
+.shape-blob{
+  position: absolute;
+  top: -40px; right: 5%;
+  width: 380px; height: 380px;
+  background: radial-gradient(ellipse at 30% 30%, #fff, #f1f3f5 60%, #e9ecef 100%);
+  opacity: .8;
+  z-index: 0;                   /* por detrás del contenido */
+  filter: drop-shadow(0 10px 30px rgba(0,0,0,.08));
+  clip-path: path("M0.6,0.1 C0.9,0.2,1,0.5,0.9,0.7 C0.8,1,0.4,1,0.2,0.8 C0,0.6,0.2,0.2,0.6,0.1 Z");
+  /* Si tu editor no acepta path(), usa polygon(): */
+  /* clip-path: polygon(68% 3%, 93% 24%, 98% 55%, 81% 86%, 46% 100%, 16% 86%, 4% 56%, 14% 25%, 41% 7%); */
+}
+.icon-section .container{ position: relative; z-index: 1; }
+@media (max-width: 768px){
+  .shape-blob{ width: 260px; height: 260px; top: -20px; right: -10px; }
+}
+
+.img-mask-diamond{
+  display:block; width:100%; max-width:420px; margin:auto;
+  aspect-ratio: 4/3; object-fit: cover;
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); /* rombo */
+  box-shadow: 0 12px 28px rgba(0,0,0,.12);
 }
 
 .icon-section {
@@ -796,3 +817,12 @@ picture img {
 .btn-top:hover {
   background-color: #495057;
 }
+
+.product-card {
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0,0,0,.12);
+}
+
