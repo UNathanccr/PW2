@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo</title>
+    <link rel="icon" type="image/x-icon" href="multimedia/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Header con Navegación Responsiva -->
+    <header class="fixed-top bg-white shadow-sm">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand fw-bold center" href="index.html">
+                    <img src="multimedia/favicon.png" style="width: 50px; height: 50px;" alt="">
+                </a>
+                <h3 style="padding-top: 15px;">Galeria del Mueble</h3>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="productos.html">Productos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="servicios.html">Servicios</a></li>
+                        <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                        <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Catálogo de Productos con Cards -->
+        <section class="catalog-section py-5">
+            <div class="container">
+                <h2 class="text-center mb-5">Catálogo de Productos</h2>
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                        <div class="card h-100 product-card">
+                            <img src="multimedia/sofamoderno.png" class="card-img-top" alt="Sofá moderno">
+                            <div class="card-body">
+                                <h5 class="card-title">Sofá Moderno</h5>
+                                <p class="card-text">Diseño ergonómico y elegante</p>
+                                <p class="price fw-bold">$899</p>
+                                <button class="btn btn-dark w-100" 
+                                        data-bs-toggle="tooltip" 
+                                        data-bs-placement="top" 
+                                        title="Agregar al carrito">
+                                    <i class="bi bi-cart-plus"></i> Comprar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                      <div class="card h-100 product-card">
+                        <img src="multimedia/Sofaseccional.png" class="card-img-top" alt="Sofá Seccional">
+                        <div class="card-body">
+                          <h5 class="card-title">Sofá Seccional</h5>
+                          <p class="card-text">Comodidad y estilo para toda la familia</p>
+                          <p class="price fw-bold">$1,199</p>
+                          <button class="btn btn-dark w-100" data-bs-toggle="tooltip" data-bs-placement="top" title="Agregar al carrito">
+                            <i class="bi bi-cart-plus"></i> Comprar
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                      <div class="card h-100 product-card">
+                        <img src="multimedia/sofaesquinero.jpg" class="card-img-top" alt="Sofá de Esquina">
+                        <div class="card-body">
+                          <h5 class="card-title">Sofá de Esquina</h5>
+                          <p class="card-text">Ideal para optimizar espacios modernos</p>
+                          <p class="price fw-bold">$1,050</p>
+                          <button class="btn btn-dark w-100" data-bs-toggle="tooltip" data-bs-placement="top" title="Agregar al carrito">
+                            <i class="bi bi-cart-plus"></i> Comprar
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                      <div class="card h-100 product-card">
+                        <img src="multimedia/sofaminimalista.jpg" class="card-img-top" alt="Sofá Minimalista">
+                        <div class="card-body">
+                          <h5 class="card-title">Sofá Minimalista</h5>
+                          <p class="card-text">Diseño limpio y elegante para tu sala</p>
+                          <p class="price fw-bold">$890</p>
+                          <button class="btn btn-dark w-100" data-bs-toggle="tooltip" data-bs-placement="top" title="Agregar al carrito">
+                            <i class="bi bi-cart-plus"></i> Comprar
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                      <div class="card h-100 product-card">
+                        <img src="multimedia/sillonreclinable.webp" class="card-img-top" alt="Sofá Reclinable">
+                        <div class="card-body">
+                          <h5 class="card-title">Sofá Reclinable</h5>
+                          <p class="card-text">Máxima comodidad con reclinación ajustable</p>
+                          <p class="price fw-bold">$1,350</p>
+                          <button class="btn btn-dark w-100" data-bs-toggle="tooltip" data-bs-placement="top" title="Agregar al carrito">
+                            <i class="bi bi-cart-plus"></i> Comprar
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                      <div class="card h-100 product-card">
+                        <img src="multimedia/sofamodular.jpg" class="card-img-top" alt="Sofá Modular">
+                        <div class="card-body">
+                          <h5 class="card-title">Sofá Modular</h5>
+                          <p class="card-text">Arma tu sala a tu gusto con módulos versátiles</p>
+                          <p class="price fw-bold">$1,499</p>
+                          <button class="btn btn-dark w-100" data-bs-toggle="tooltip" data-bs-placement="top" title="Agregar al carrito">
+                            <i class="bi bi-cart-plus"></i> Comprar
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                      <div class="card h-100 product-card">
+                        <img src="multimedia/sofaclasico.jpg" class="card-img-top" alt="Sofá Clásico Moderno">
+                        <div class="card-body">
+                          <h5 class="card-title">Sofá Clásico Moderno</h5>
+                          <p class="card-text">Una mezcla entre tradición y modernidad</p>
+                          <p class="price fw-bold">$970</p>
+                          <button class="btn btn-dark w-100" data-bs-toggle="tooltip" data-bs-placement="top" title="Agregar al carrito">
+                            <i class="bi bi-cart-plus"></i> Comprar
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                      <div class="card h-100 product-card">
+                        <img src="multimedia/sofalounge.jpeg" class="card-img-top" alt="Sofá Lounge">
+                        <div class="card-body">
+                          <h5 class="card-title">Sofá Lounge</h5>
+                          <p class="card-text">Perfecto para descansar y socializar</p>
+                          <p class="price fw-bold">$1,080</p>
+                          <button class="btn btn-dark w-100" data-bs-toggle="tooltip" data-bs-placement="top" title="Agregar al carrito">
+                            <i class="bi bi-cart-plus"></i> Comprar
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                      <div class="card h-100 product-card">
+                        <img src="multimedia/sofapremium.jpg" class="card-img-top" alt="Sofá Premium">
+                        <div class="card-body">
+                          <h5 class="card-title">Sofá Premium</h5>
+                          <p class="card-text">Diseño exclusivo con acabados de lujo</p>
+                          <p class="price fw-bold">$1,800</p>
+                          <button class="btn btn-dark w-100" data-bs-toggle="tooltip" data-bs-placement="top" title="Agregar al carrito">
+                            <i class="bi bi-cart-plus"></i> Comprar
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- WhatsApp Chat Button -->
+    <a href="https://wa.me/50612345678" 
+       class="whatsapp-btn" 
+       target="_blank"
+       data-bs-toggle="popover"
+       data-bs-trigger="hover"
+       data-bs-content="¡Chatea con nosotros!">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Mueblería Elegante</h5>
+                    <p>Transformando espacios desde 2010</p>
+                    <div class="social-links">
+                        <a href="http://www.facebook.com" target="_blank" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+                        <a href="http://www.instagram.com" target="_blank" class="text-white me-3"><i class="bi bi-instagram"></i></a>
+                        <a href="http://www.x.com" target="_blank" class="text-white me-3"><i class="bi bi-twitter"></i></a>
+                        <a href="http://www.youtube.com" target="_blank" class="text-white"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h5>Enlaces Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white-50">Términos y Condiciones</a></li>
+                        <li><a href="#" class="text-white-50">Política de Privacidad</a></li>
+                        <li><a href="#" class="text-white-50">Devoluciones</a></li>
+                        <li><a href="#" class="text-white-50">Garantías</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contacto</h5>
+                    <p><i class="bi bi-geo-alt"></i> San José, Costa Rica</p>
+                    <p><i class="bi bi-phone"></i> +506 1234-5678</p>
+                    <p><i class="bi bi-envelope"></i> info@galeriadelmueble.com</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2025 Galeria del Mueble. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script>
+        // Inicializar tooltips
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        });
+
+        // Inicializar popovers
+        var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+        var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+            return new bootstrap.Popover(popoverTriggerEl)
+        });
+    </script>
+
+    <!-- Botón Volver Arriba -->
+    <button id="btnTop" class="btn-top">
+    <i class="bi bi-arrow-up-circle-fill"></i>
+    </button>
+
+    <script>
+    const btnTop = document.getElementById("btnTop");
+
+    // Mostrar el botón cuando se baja 200px
+    window.onscroll = function() {
+        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        btnTop.style.display = "block";
+        } else {
+        btnTop.style.display = "none";
+        }
+    };
+
+    // Al hacer clic, subir suavemente al inicio
+    btnTop.onclick = function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+    </script>
+</body>
+</html>

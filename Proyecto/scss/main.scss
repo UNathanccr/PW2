@@ -1,0 +1,970 @@
+// ===================================
+// VARIABLES
+// ===================================
+$color-primary: #000000;
+$color-secondary: #333333;
+$color-gray-dark: #555555;
+$color-gray: #777777;
+$color-gray-light: #999999;
+$color-gray-lighter: #cccccc;
+$color-gray-lightest: #f8f9fa;
+$color-white: #ffffff;
+
+$font-primary: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-secondary: 'Georgia', serif;
+
+$base-font-size: 16px;
+
+// Breakpoints
+$breakpoint-xs: 576px;
+$breakpoint-sm: 768px;
+$breakpoint-md: 992px;
+$breakpoint-lg: 1200px;
+$breakpoint-xl: 1400px;
+
+// ===================================
+// MIXINS
+// ===================================
+@mixin transition($property: all, $duration: 0.3s, $timing: ease) {
+    transition: $property $duration $timing;
+}
+
+@mixin box-shadow($x: 0, $y: 0.125rem, $blur: 0.25rem, $color: rgba(0,0,0,0.1)) {
+    box-shadow: $x $y $blur $color;
+}
+
+@mixin gradient-overlay() {
+    background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
+}
+
+@mixin responsive($breakpoint) {
+    @if $breakpoint == xs {
+        @media (max-width: #{$breakpoint-xs}) { @content; }
+    }
+    @else if $breakpoint == sm {
+        @media (min-width: #{$breakpoint-xs}) and (max-width: #{$breakpoint-sm}) { @content; }
+    }
+    @else if $breakpoint == md {
+        @media (min-width: #{$breakpoint-sm}) and (max-width: #{$breakpoint-md}) { @content; }
+    }
+    @else if $breakpoint == lg {
+        @media (min-width: #{$breakpoint-md}) and (max-width: #{$breakpoint-lg}) { @content; }
+    }
+    @else if $breakpoint == xl {
+        @media (min-width: #{$breakpoint-lg}) { @content; }
+    }
+}
+
+// ===================================
+// FUNCIONES
+// ===================================
+@function rem($pixels, $context: $base-font-size) {
+    @return #{$pixels / $context}rem;
+}
+
+// ===================================
+// BASE STYLES
+// ===================================
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: $base-font-size;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: $font-primary;
+    line-height: 1.6;
+    color: $color-secondary;
+    background-color: $color-white;
+    padding-top: rem(76px); // Para el header fixed
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $font-primary;
+    font-weight: 700;
+    color: $color-primary;
+    margin-bottom: rem(16px);
+}
+
+h1 { font-size: rem(48px); }
+h2 { font-size: rem(36px); }
+h3 { font-size: rem(28px); }
+h4 { font-size: rem(24px); }
+h5 { font-size: rem(20px); }
+h6 { font-size: rem(18px); }
+
+p {
+    margin-bottom: rem(16px);
+    font-size: rem(16px);
+}
+
+a {
+    color: $color-primary;
+    text-decoration: none;
+    @include transition();
+    
+    &:hover {
+        color: $color-gray;
+    }
+}
+
+// ===================================
+// HEADER & NAVIGATION
+// ===================================
+header {
+    background-color: $color-white !important;
+    @include box-shadow();
+    z-index: 1000;
+    
+    .navbar {
+        padding: rem(16px) 0;
+        
+        .navbar-brand {
+            font-size: rem(24px);
+            color: $color-primary !important;
+            letter-spacing: rem(2px);
+            
+            i {
+                font-size: rem(28px);
+            }
+        }
+        
+        .navbar-nav {
+            .nav-link {
+                color: $color-secondary !important;
+                font-size: rem(14px);
+                font-weight: 500;
+                padding: rem(8px) rem(16px);
+                text-transform: uppercase;
+                letter-spacing: rem(1px);
+                position: relative;
+                @include transition();
+                
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    width: 0;
+                    height: rem(2px);
+                    background-color: $color-primary;
+                    transform: translateX(-50%);
+                    @include transition(width, 0.3s);
+                }
+                
+                &:hover,
+                &.active {
+                    color: $color-primary !important;
+                    
+                    &::after {
+                        width: 80%;
+                    }
+                }
+            }
+        }
+        
+        .navbar-toggler {
+            border: none;
+            padding: rem(4px) rem(8px);
+            
+            &:focus {
+                box-shadow: none;
+            }
+        }
+    }
+}
+
+// ===================================
+// HERO SECTION
+// ===================================
+.hero-section {
+    height: 100vh;
+    min-height: rem(600px);
+    overflow: hidden;
+    margin-top: rem(-76px);
+    
+    .video-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        
+        video, img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            @include gradient-overlay();
+        }
+    }
+    
+    .hero-content {
+        z-index: 1;
+        padding: rem(32px);
+        
+        h1 {
+            color: $color-white;
+            font-size: rem(64px);
+            text-shadow: rem(2px) rem(2px) rem(4px) rgba(0,0,0,0.5);
+            
+            @include responsive(sm) {
+                font-size: rem(48px);
+            }
+            
+            @include responsive(xs) {
+                font-size: rem(36px);
+            }
+        }
+        
+        p {
+            font-size: rem(24px);
+            color: $color-white;
+            text-shadow: rem(1px) rem(1px) rem(2px) rgba(0,0,0,0.5);
+            
+            @include responsive(xs) {
+                font-size: rem(18px);
+            }
+        }
+        
+        .btn {
+            padding: rem(12px) rem(32px);
+            font-size: rem(18px);
+            border-width: rem(2px);
+            @include transition();
+            
+            &:hover {
+                background-color: $color-white;
+                color: $color-primary;
+                transform: translateY(rem(-2px));
+            }
+        }
+    }
+}
+
+// ===================================
+// DIVISORES CLIP-PATH
+// ===================================
+.section-divider {
+    height: rem(100px);
+    background-color: $color-white;
+    position: relative;
+    margin-top: rem(-1px);
+    
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
+    
+    @include responsive(xs) {
+        height: rem(60px);
+    }
+}
+
+.geometric-shape {
+    height: rem(150px);
+    background: linear-gradient(135deg, $color-gray-lightest 0%, $color-white 100%);
+    clip-path: polygon(0 0, 100% 30%, 100% 100%, 0 70%);
+    margin: rem(48px) 0;
+    
+    @include responsive(xs) {
+        height: rem(100px);
+    }
+}
+
+// ===================================
+// SECCIONES
+// ===================================
+.icon-section {
+    padding: rem(80px) 0;
+    background-color: $color-white;
+    
+    h2 {
+        margin-bottom: rem(48px);
+        position: relative;
+        
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: rem(-16px);
+            left: 50%;
+            transform: translateX(-50%);
+            width: rem(60px);
+            height: rem(3px);
+            background-color: $color-primary;
+        }
+    }
+    
+    .icon-box {
+        padding: rem(32px);
+        background-color: $color-white;
+        border-radius: rem(8px);
+        @include transition();
+        @include box-shadow();
+        
+        &:hover {
+            transform: translateY(rem(-8px));
+            @include box-shadow(0, rem(8px), rem(16px), rgba(0,0,0,0.15));
+        }
+        
+        i {
+            color: $color-primary;
+            font-size: rem(48px);
+            margin-bottom: rem(16px);
+        }
+        
+        h4 {
+            font-size: rem(20px);
+            margin-bottom: rem(8px);
+        }
+        
+        p {
+            color: $color-gray;
+            font-size: rem(14px);
+            margin: 0;
+        }
+    }
+}
+
+// ===================================
+// CAROUSEL
+// ===================================
+.carousel-section {
+    .carousel {
+        .carousel-item {
+            height: rem(500px);
+            
+            @include responsive(sm) {
+                height: rem(400px);
+            }
+            
+            @include responsive(xs) {
+                height: rem(300px);
+            }
+            
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                filter: brightness(0.8);
+            }
+        }
+        
+        .carousel-caption {
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(rem(5px));
+            padding: rem(24px);
+            border-radius: rem(8px);
+            
+            h3 {
+                color: $color-white;
+                font-size: rem(32px);
+                margin-bottom: rem(8px);
+            }
+            
+            p {
+                color: $color-gray-lighter;
+                font-size: rem(18px);
+            }
+        }
+        
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: rem(60px);
+            
+            &:hover {
+                background: rgba(0,0,0,0.3);
+            }
+        }
+    }
+}
+
+// ===================================
+// PRODUCTOS / CATÁLOGO
+// ===================================
+.catalog-section {
+    padding: rem(80px) 0;
+    background-color: $color-gray-lightest;
+    
+    .product-card {
+        border: none;
+        border-radius: rem(8px);
+        overflow: hidden;
+        @include transition();
+        @include box-shadow();
+        
+        &:hover {
+            transform: translateY(rem(-8px));
+            @include box-shadow(0, rem(12px), rem(24px), rgba(0,0,0,0.15));
+            
+            img {
+                transform: scale(1.05);
+            }
+        }
+        
+        img {
+            height: rem(250px);
+            object-fit: cover;
+            @include transition(transform, 0.5s);
+        }
+        
+        .card-body {
+            padding: rem(24px);
+            
+            .card-title {
+                font-size: rem(20px);
+                margin-bottom: rem(8px);
+            }
+            
+            .card-text {
+                color: $color-gray;
+                font-size: rem(14px);
+                margin-bottom: rem(16px);
+            }
+            
+            .price {
+                font-size: rem(24px);
+                color: $color-primary;
+                margin-bottom: rem(16px);
+            }
+            
+            .btn {
+                font-size: rem(14px);
+                padding: rem(10px) rem(20px);
+                border-radius: rem(4px);
+                
+                &:hover {
+                    transform: scale(1.05);
+                }
+            }
+        }
+    }
+}
+
+// ===================================
+// TABLA DE PRECIOS
+// ===================================
+.pricing-section {
+    padding: rem(80px) 0;
+    
+    .table {
+        font-size: rem(14px);
+        
+        thead {
+            th {
+                padding: rem(16px);
+                font-size: rem(14px);
+                text-transform: uppercase;
+                letter-spacing: rem(1px);
+            }
+        }
+        
+        tbody {
+            td {
+                padding: rem(12px) rem(16px);
+                vertical-align: middle;
+            }
+            
+            tr {
+                @include transition();
+                
+                &:hover {
+                    background-color: $color-gray-lightest;
+                    transform: scale(1.01);
+                }
+            }
+        }
+    }
+}
+
+// ===================================
+// FORMULARIO
+// ===================================
+.contact-form {
+    .form-label {
+        font-weight: 600;
+        font-size: rem(14px);
+        color: $color-secondary;
+        margin-bottom: rem(8px);
+    }
+    
+    .form-control {
+        border: rem(1px) solid $color-gray-lighter;
+        border-radius: rem(4px);
+        padding: rem(12px);
+        font-size: rem(14px);
+        @include transition();
+        
+        &:focus {
+            border-color: $color-primary;
+            box-shadow: 0 0 0 rem(3px) rgba(0,0,0,0.1);
+        }
+    }
+    
+    textarea.form-control {
+        resize: vertical;
+        min-height: rem(120px);
+    }
+}
+
+// ===================================
+// MAPA
+// ===================================
+.map-container {
+    position: relative;
+    width: 100%;
+    height: rem(400px);
+    border-radius: rem(8px);
+    overflow: hidden;
+    @include box-shadow();
+    
+    iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+}
+
+// ===================================
+// COMPONENTES BOOTSTRAP PERSONALIZADOS
+// ===================================
+
+// Accordion
+.accordion {
+    .accordion-item {
+        border: none;
+        margin-bottom: rem(16px);
+        border-radius: rem(8px);
+        overflow: hidden;
+        @include box-shadow();
+    }
+    
+    .accordion-button {
+        background-color: $color-white;
+        color: $color-primary;
+        font-weight: 600;
+        font-size: rem(16px);
+        padding: rem(20px);
+        
+        &:not(.collapsed) {
+            background-color: $color-gray-lightest;
+            color: $color-primary;
+            box-shadow: none;
+        }
+        
+        &:focus {
+            box-shadow: none;
+            border-color: transparent;
+        }
+        
+        &::after {
+            background-size: rem(20px);
+        }
+    }
+    
+    .accordion-body {
+        padding: rem(20px);
+        font-size: rem(14px);
+        color: $color-gray-dark;
+    }
+}
+
+// Modal
+.modal {
+    .modal-content {
+        border: none;
+        border-radius: rem(12px);
+        @include box-shadow(0, rem(8px), rem(32px), rgba(0,0,0,0.2));
+    }
+    
+    .modal-header {
+        border-bottom: rem(1px) solid $color-gray-lighter;
+        padding: rem(24px);
+        
+        .modal-title {
+            font-size: rem(24px);
+            font-weight: 700;
+        }
+        
+        .btn-close {
+            padding: rem(12px);
+        }
+    }
+    
+    .modal-body {
+        padding: rem(24px);
+        font-size: rem(14px);
+    }
+    
+    .modal-footer {
+        border-top: rem(1px) solid $color-gray-lighter;
+        padding: rem(24px);
+        
+        .btn {
+            padding: rem(10px) rem(24px);
+            font-size: rem(14px);
+        }
+    }
+}
+
+// List Group
+.list-group {
+    .list-group-item {
+        border: none;
+        border-radius: rem(8px);
+        margin-bottom: rem(12px);
+        padding: rem(16px);
+        @include box-shadow();
+        @include transition();
+        
+        &:hover {
+            transform: translateX(rem(8px));
+            @include box-shadow(0, rem(4px), rem(12px), rgba(0,0,0,0.15));
+        }
+        
+        h5 {
+            font-size: rem(18px);
+            margin-bottom: rem(4px);
+        }
+        
+        p {
+            font-size: rem(14px);
+            color: $color-gray;
+            margin: 0;
+        }
+        
+        small {
+            font-size: rem(20px);
+        }
+    }
+}
+
+// ===================================
+// VIDEO RESPONSIVO
+// ===================================
+.ratio {
+    position: relative;
+    width: 100%;
+    
+    &.ratio-16x9 {
+        padding-bottom: 56.25%;
+    }
+    
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: rem(8px);
+    }
+}
+
+// ===================================
+// WHATSAPP BUTTON
+// ===================================
+.whatsapp-btn {
+    position: fixed;
+    bottom: rem(32px);
+    right: rem(32px);
+    width: rem(60px);
+    height: rem(60px);
+    background-color: #25d366;
+    color: $color-white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: rem(32px);
+    @include box-shadow(0, rem(4px), rem(12px), rgba(0,0,0,0.3));
+    z-index: 999;
+    @include transition();
+    
+    &:hover {
+        color: $color-white;
+        transform: scale(1.1);
+        @include box-shadow(0, rem(6px), rem(16px), rgba(0,0,0,0.4));
+    }
+    
+    @include responsive(xs) {
+        width: rem(50px);
+        height: rem(50px);
+        font-size: rem(24px);
+        bottom: rem(20px);
+        right: rem(20px);
+    }
+}
+
+// ===================================
+// FOOTER
+// ===================================
+footer {
+    background-color: $color-primary !important;
+    padding: rem(64px) 0 rem(32px);
+    
+    h5 {
+        color: $color-white;
+        font-size: rem(20px);
+        margin-bottom: rem(24px);
+        text-transform: uppercase;
+        letter-spacing: rem(1px);
+    }
+    
+    p {
+        color: $color-gray-lighter;
+        font-size: rem(14px);
+        margin-bottom: rem(12px);
+        
+        i {
+            margin-right: rem(8px);
+            font-size: rem(16px);
+        }
+    }
+    
+    .social-links {
+        margin-top: rem(20px);
+        
+        a {
+            display: inline-block;
+            width: rem(40px);
+            height: rem(40px);
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: rem(40px);
+            font-size: rem(18px);
+            @include transition();
+            
+            &:hover {
+                background-color: $color-white;
+                color: $color-primary !important;
+                transform: translateY(rem(-4px));
+            }
+        }
+    }
+    
+    ul {
+        list-style: none;
+        padding: 0;
+        
+        li {
+            margin-bottom: rem(8px);
+            
+            a {
+                color: $color-gray-lighter;
+                font-size: rem(14px);
+                @include transition();
+                
+                &:hover {
+                    color: $color-white;
+                    padding-left: rem(8px);
+                }
+            }
+        }
+    }
+    
+    hr {
+        border-color: rgba(255,255,255,0.1);
+        margin: rem(32px) 0;
+    }
+}
+
+// ===================================
+// UTILIDADES
+// ===================================
+.btn-dark {
+    background-color: $color-primary;
+    border-color: $color-primary;
+    
+    &:hover {
+        background-color: $color-secondary;
+        border-color: $color-secondary;
+    }
+}
+
+.btn-outline-light {
+    &:hover {
+        color: $color-primary;
+    }
+}
+
+.text-center {
+    text-align: center;
+}
+
+.py-5 {
+    padding-top: rem(80px) !important;
+    padding-bottom: rem(80px) !important;
+}
+
+.mb-5 {
+    margin-bottom: rem(48px) !important;
+}
+
+// ===================================
+// ANIMACIONES
+// ===================================
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(rem(20px));
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(rem(-50px));
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(rem(50px));
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+// Aplicar animaciones
+.animate-fadeIn {
+    animation: fadeIn 0.8s ease-out;
+}
+
+.animate-slideInLeft {
+    animation: slideInLeft 0.8s ease-out;
+}
+
+.animate-slideInRight {
+    animation: slideInRight 0.8s ease-out;
+}
+
+.animate-pulse {
+    animation: pulse 2s infinite;
+}
+
+// ===================================
+// RESPONSIVE ADJUSTMENTS
+// ===================================
+@include responsive(xs) {
+    body {
+        padding-top: rem(60px);
+    }
+    
+    h1 { font-size: rem(32px); }
+    h2 { font-size: rem(28px); }
+    h3 { font-size: rem(24px); }
+    h4 { font-size: rem(20px); }
+    h5 { font-size: rem(18px); }
+    h6 { font-size: rem(16px); }
+    
+    .container {
+        padding-left: rem(16px);
+        padding-right: rem(16px);
+    }
+    
+    .py-5 {
+        padding-top: rem(48px) !important;
+        padding-bottom: rem(48px) !important;
+    }
+    
+    .mb-5 {
+        margin-bottom: rem(32px) !important;
+    }
+}
+
+@include responsive(sm) {
+    .container {
+        max-width: 100%;
+        padding-left: rem(20px);
+        padding-right: rem(20px);
+    }
+}
+
+// ===================================
+// OPTIMIZACIÓN DE IMÁGENES
+// ===================================
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    
+    &.lazyload {
+        opacity: 0;
+        transition: opacity 0.3s;
+        
+        &.loaded {
+            opacity: 1;
+        }
+    }
+}
+
+// Imágenes optimizadas con diferentes resoluciones
+picture {
+    display: block;
+    
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+// ===================================
+// PRINT STYLES
+// ===================================
+@media print {
+    header,
+    footer,
+    .whatsapp-btn,
+    .hero-section,
+    .carousel-section {
+        display: none !important;
+    }
+    
+    body {
+        padding-top: 0;
+        font-size: rem(12px);
+    }
+    
+    .container {
+        max-width: 100%;
+    }
+    
+    a {
+        color: $color-primary;
+        text-decoration: none;
+    }
+}
